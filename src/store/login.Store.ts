@@ -1,7 +1,7 @@
 // 登录模块的mobx管理
 import { makeObservable, observable  } from 'mobx'
 import Axios from '@/utils/http'
-import { setToken, getToken } from '@/utils/token'
+import { setToken, getToken, delToken } from '@/utils/token'
 
 type LoginInfo = {
   mobile: string,
@@ -24,6 +24,11 @@ class LoginStore {
     console.log(res)
     this.token = res.data.data.token
     setToken(this.token)
+  }
+  // 退出登录
+  quitLogin = () => {
+    this.token = ''
+    delToken()
   }
 }
 

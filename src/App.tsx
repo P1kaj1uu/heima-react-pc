@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from '@/pages/Login'
 import Layout from '@/pages/Layout'
+import Home from '@/pages/Home';
+import Article from '@/pages/Article';
+import Publish from '@/pages/Publish';
 import './App.css';
 // 导入antd样式
 import 'antd/dist/reset.css';
@@ -21,7 +24,12 @@ function App() {
             <AuthComponent>
               <Layout />
             </AuthComponent>
-          } />
+          } >
+            {/* 二级路由默认页面 */}
+            <Route index element={<Home />} />
+            <Route path="article" element={<Article />} />
+            <Route path="publish" element={<Publish />} />
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>

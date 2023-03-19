@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosInstance } from 'axios';
-import { getToken } from './token'
+import { getToken, delToken } from './token'
 import history from './history'
 
 interface ApiResponse<T> {
@@ -40,6 +40,7 @@ Axios.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
+      delToken()
       history.push('/login')
     }
     return Promise.reject(error);
